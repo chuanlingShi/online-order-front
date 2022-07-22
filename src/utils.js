@@ -68,3 +68,16 @@ export const login = (credential) => {
     });
   };
   
+  export const addItemToCart = (itemId) => {
+    return fetch(`/order/${itemId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }).then((response) => {
+      if (response.status < 200 || response.status >= 300) {
+        throw Error("Fail to add menu item to shopping cart");
+      }
+    });
+  };
